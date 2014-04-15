@@ -28,7 +28,8 @@
     "test": "grunt test"
   },
   "dependencies": {
-    "jsdom": "^0.10.5"
+    "jsdom": "^0.10.5",
+    "mocha": "^1.18.2"
   },
   "devDependencies": {
     "grunt-contrib-jshint": "~0.6.0",
