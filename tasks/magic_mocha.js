@@ -20,8 +20,10 @@ module.exports = function(grunt) {
 		// Merge task-specific and/or target-specific options with these defaults.
 		var options = this.options({
 			require: [],
-			reporter: "spec",
-			ui: "bdd"
+			mochaOptions:{
+				reporter: "spec",
+				ui: "bdd"
+			}
 		});
 
 		// Initialize jsDOM
@@ -33,8 +35,11 @@ module.exports = function(grunt) {
 		// Initialize mocha
 		var Mocha = require('mocha');
 		var mocha = new Mocha();
-		mocha.reporter( options.reporter );
-		mocha.ui( options.ui );
+
+		// Set mocha options
+		for( var mochaOption in options.mochaOptions ){
+			mocha[mochaOption]( options.mochaOptions[mochaOption] );
+		}
 
 		// Iterate each test file and add to mocha
 		this.files.forEach(function(file) {
