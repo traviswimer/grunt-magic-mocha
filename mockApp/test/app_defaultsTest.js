@@ -20,4 +20,10 @@ describe("global objects", function(){
 			assert( document );
 		});
 	});
+
+	describe("navigator", function(){
+		it("should exist", function(){
+			assert( navigator );
+		});
+	});
 });
