@@ -22,11 +22,14 @@ grunt.loadNpmTasks('grunt-magic-mocha');
 ```js
 grunt.initConfig({
   magic_mocha: {
-
+    myTests: {
+      files: {
+        src: ['test/**/*_test.js']
+      }
+    }
   }
 });
 ```
-
 
 ## The "magic_mocha" task
 
@@ -36,18 +39,41 @@ In your project's Gruntfile, add a section named `magic_mocha` to the data objec
 ```js
 grunt.initConfig({
   magic_mocha: {
-    
-  },
+    myTestsWithOptions: {
+      options: {
+        globals: {
+          // Add the jQuery module to the window object
+          '$': 'jquery'
+        },
+        mochaOptions:{
+          // You should be able to include any mocha options here
+          reporter: "spec",
+          ui: "bdd"
+        }
+      },
+      files: {
+        src: ['test/**/*_test.js']
+      }
+    }
+  }
 });
 ```
-*All values in this example represent the defaul values that will be used if they are not specified*
 
 ### Options
 
-#### options.files
-Type: `String`
+#### options.globals
+Type: `object`
 
-The location of your unit tests files.
+Specifies modules that should be attached to the global `window` variable.
+
+#### options.mochaOptions
+Type: `object`
+
+Specifies any mocha options to be used. For more details, look throught the [http://visionmedia.github.io/mocha/](Mocha documentation).
+
+The following options are included by default:
+*   **reporter** - "spec"
+*   **ui** - "bdd"
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
