@@ -7,13 +7,12 @@
  */
 
 
-// window/document/navigator objects break jshint. These options force jshint to
+// window/document objects break jshint. These options force jshint to
 // ignore problem with defining without `var` and allows globals
 
 /* jshint -W020 */
 /* global document */
 /* global window */
-/* global navigator */
 
 
 'use strict';
@@ -41,7 +40,14 @@ module.exports = function(grunt) {
 		var jsdom = require('jsdom').jsdom;
 		global.document = jsdom('<html><head><script></script></head><body></body></html>');
 		global.window = document.createWindow();
-		global.navigator = window.navigator = {};
+
+		// Add all default window properties to the global object
+		for(var windowProp in global.window ){
+			// Some global vars already exist and can't be overwritten.
+			if( typeof global[windowProp] === "undefined" ){
+				global[windowProp] = global.window[ windowProp ];
+			}
+		}
 
 		// Set window globals
 		for( var globalName in options.globals ){
