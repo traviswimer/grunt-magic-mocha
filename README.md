@@ -17,6 +17,17 @@ Enable in your Gruntfile with:
 grunt.loadNpmTasks('grunt-magic-mocha');
 ```
 
+> **NOTE:** If you get errors installing this module, it is probably caused by the `contextify` dependency of `jsDOM`. There is more information [here](https://github.com/tmpvar/jsdom#contextify).
+
+>If you are using Linux, you may just need to update your version of `NodeJS`.
+The most up-to-date version can be found [here](http://nodejs.org/). You will need to download the file, untar it and then run the following commands within the new directory:
+
+```shell
+./configure
+make
+sudo make install
+```
+
 ## Quick setup
 
 ```js
@@ -69,7 +80,7 @@ Specifies modules that should be attached to the global `window` variable.
 #### options.mochaOptions
 Type: `object`
 
-Specifies any mocha options to be used. For more details, look throught the [http://visionmedia.github.io/mocha/](Mocha documentation).
+Specifies any mocha options to be used. For more details, look throught the [Mocha documentation](http://visionmedia.github.io/mocha/).
 
 The following options are included by default:
 *   **reporter** - "spec"
