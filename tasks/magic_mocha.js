@@ -6,7 +6,11 @@
  * Licensed under the MIT license.
  */
 
-'use strict';
+/* jshint -W020 */
+/* global document */
+/* global window */
+
+//'use strict';
 
 module.exports = function(grunt) {
 
@@ -28,8 +32,8 @@ module.exports = function(grunt) {
 
 		// Initialize jsDOM
 		var jsdom = require('jsdom').jsdom;
-		var document = jsdom('<html><head><script></script></head><body></body></html>');
-		var window = document.createWindow();
+		document = jsdom('<html><head><script></script></head><body></body></html>');
+		window = document.createWindow();
 
 
 		// Initialize mocha
