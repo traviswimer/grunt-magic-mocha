@@ -34,8 +34,6 @@
   "devDependencies": {
     "grunt-contrib-jshint": "~0.6.0",
     "grunt": "^0.4.4",
-    "chai": "~1.9.1",
-    "grunt-mocha-test": "~0.10.0",
     "grunt-contrib-watch": "~0.6.0",
     "grunt-cli": "~0.1.13",
     "jquery": "^2.1.0"
