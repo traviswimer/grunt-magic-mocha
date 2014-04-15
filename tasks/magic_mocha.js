@@ -10,6 +10,8 @@
 /* global document */
 /* global window */
 
+
+// Don't try to add `'use strict';`. It wont allow the 
 //'use strict';
 
 module.exports = function(grunt) {
@@ -23,17 +25,23 @@ module.exports = function(grunt) {
 
 		// Merge task-specific and/or target-specific options with these defaults.
 		var options = this.options({
-			require: [],
+			globals: {},
 			mochaOptions:{
 				reporter: "spec",
 				ui: "bdd"
 			}
 		});
 
+
 		// Initialize jsDOM
 		var jsdom = require('jsdom').jsdom;
-		document = jsdom('<html><head><script></script></head><body></body></html>');
-		window = document.createWindow();
+		global.document = jsdom('<html><head><script></script></head><body></body></html>');
+		global.window = document.createWindow();
+
+		// Set window globals
+		for( var globalName in options.globals ){
+			global.window[globalName] = require( options.globals[globalName] );
+		}
 
 
 		// Initialize mocha
@@ -44,6 +52,7 @@ module.exports = function(grunt) {
 		for( var mochaOption in options.mochaOptions ){
 			mocha[mochaOption]( options.mochaOptions[mochaOption] );
 		}
+
 
 		// Iterate each test file and add to mocha
 		this.files.forEach(function(file) {
