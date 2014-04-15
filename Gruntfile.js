@@ -24,7 +24,24 @@ module.exports = function(grunt) {
 
 		// Configuration to be run (and then tested).
 		magic_mocha: {
-			tests: ['mockApp/test/*_test.js']
+			defaults: {
+				files: {
+					src: ['mockApp/test/*_defaultsTest.js']
+				}
+			},
+			withOptions: {
+				options: {
+					globals: {
+						'$': 'jquery'
+					},
+					mochaOptions:{
+						reporter: "nyan"
+					}
+				},
+				files: {
+					src: ['mockApp/test/*_optionsTest.js']
+				}
+			}
 		},
 
 		// Unit tests.
@@ -39,9 +56,9 @@ module.exports = function(grunt) {
 			tests: {
 				files: [
 					'tasks/**/*.js',
-					'test/**/*.js'
+					'mockApp/**/*.js'
 				],
-				tasks: ['mochaTest']
+				tasks: ['test']
 			}
 		}
 
