@@ -22,7 +22,9 @@ module.exports = function(grunt) {
 			},
 		},
 
-		// Configuration to be run (and then tested).
+		// Runs the magic-mocha task. This runs unit tests, which basically
+		// unit tests itself like some kind of unit-testception. It kind of
+		// hurts my brain, so I just accept it.
 		magic_mocha: {
 			defaults: {
 				files: {
@@ -44,14 +46,6 @@ module.exports = function(grunt) {
 			}
 		},
 
-		// Unit tests.
-		mochaTest: {
-			options: {
-				reporter: "spec"
-			},
-			tests: ['test/*_test.js']
-		},
-
 		watch: {
 			tests: {
 				files: [
@@ -70,7 +64,6 @@ module.exports = function(grunt) {
 	// These plugins provide necessary tasks.
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-watch');
-	grunt.loadNpmTasks('grunt-mocha-test');
 
 	// Lint and run tests
 	grunt.registerTask('test', ['jshint', 'magic_mocha']);
