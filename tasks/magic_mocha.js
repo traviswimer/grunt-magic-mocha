@@ -16,16 +16,23 @@ module.exports = function(grunt) {
 	grunt.registerMultiTask('magic_mocha', 'Grunt task to run front-end mocha unit tests from the command line with no browser.', function() {
 
 
-	// Merge task-specific and/or target-specific options with these defaults.
-	var options = this.options({
-		require: [],
-		reporter: "spec",
-		ui: "bdd"
-	});
+		// Merge task-specific and/or target-specific options with these defaults.
+		var options = this.options({
+			require: [],
+			tests: [],
+			reporter: "spec",
+			ui: "bdd"
+		});
 
-	this.files.forEach(function(file){
-		
-	});
+		// Iterate each test file and add to mocha
+		this.files.forEach(function(file) {
+			file.src.forEach(function(filepath){
+				if(grunt.file.exists(filepath)){
+					console.log(filepath);
+				}
+			});
+
+		});
 
 
 	});

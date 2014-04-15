@@ -10,55 +10,55 @@
 
 module.exports = function(grunt) {
 
-  // Project configuration.
-  grunt.initConfig({
-    jshint: {
-      all: [
-        'Gruntfile.js',
-        'tasks/*.js',
-      ],
-      options: {
-        jshintrc: '.jshintrc',
-      },
-    },
+	// Project configuration.
+	grunt.initConfig({
+		jshint: {
+			all: [
+				'Gruntfile.js',
+				'tasks/*.js',
+			],
+			options: {
+				jshintrc: '.jshintrc',
+			},
+		},
 
-    // Configuration to be run (and then tested).
-    magic_mocha: {
-      
-    },
+		// Configuration to be run (and then tested).
+		magic_mocha: {
+			tests: ['mockApp/test/*_test.js']
+		},
 
-    // Unit tests.
-    mochaTest: {
-      options: {
-        reporter: "spec"
-      },
-      tests: ['test/*_test.js']
-    },
+		// Unit tests.
+		mochaTest: {
+			options: {
+				reporter: "spec"
+			},
+			tests: ['test/*_test.js']
+		},
 
-    watch: {
-      tests: {
-        files: [
-          'tasks/**/*.js',
-          'test/**/*.js'
-        ],
-        tasks: ['mochaTest']
-      }
-    }
+		watch: {
+			tests: {
+				files: [
+					'tasks/**/*.js',
+					'test/**/*.js'
+				],
+				tasks: ['mochaTest']
+			}
+		}
 
-  });
+	});
 
-  // Actually load the magic-mocha plugin's task(s).
-  grunt.loadTasks('tasks');
+	// Actually load the magic-mocha plugin's task(s).
+	grunt.loadTasks('tasks');
 
-  // These plugins provide necessary tasks.
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-mocha-test');
+	// These plugins provide necessary tasks.
+	grunt.loadNpmTasks('grunt-contrib-jshint');
+	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-mocha-test');
 
-  // Lint and run tests
-  grunt.registerTask('test', ['jshint', 'mochaTest']);
+	// Lint and run tests
+	grunt.registerTask('test', ['jshint', 'magic_mocha']);
 
-  // Default is same as `test`
-  grunt.registerTask('default', ['test']);
+	// Default is same as `test`
+	grunt.registerTask('default', ['test']);
 
 };
