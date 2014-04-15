@@ -6,13 +6,16 @@
  * Licensed under the MIT license.
  */
 
+
+// window/document objects break jshint. These options force jshint to
+// ignore problem with defining without `var` and allows globals
+
 /* jshint -W020 */
 /* global document */
 /* global window */
 
 
-// Don't try to add `'use strict';`. It wont allow the 
-//'use strict';
+'use strict';
 
 module.exports = function(grunt) {
 
