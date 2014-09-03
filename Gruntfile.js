@@ -37,7 +37,7 @@ module.exports = function(grunt) {
 						'$': 'jquery'
 					},
 					mochaOptions:{
-						reporter: "nyan"
+						reporter: "spec"
 					}
 				},
 				files: {
