@@ -8,7 +8,13 @@ describe("testApp", function(){
 	});
 });
 
-describe("global objects", function(){
+describe("global object", function(){
+
+	it("should contain jquery", function(){
+		assert( $ );
+		assert( $.ajax );
+	});
+
 	describe("window", function(){
 		it("should exist", function(){
 			assert( window );

@@ -49,9 +49,10 @@ module.exports = function(grunt) {
 			}
 		}
 
-		// Set window globals
+		// Set to global object and window object
 		for( var globalName in options.globals ){
-			global.window[globalName] = require( options.globals[globalName] );
+			global[globalName] = require( options.globals[globalName] );
+			global.window[globalName] = global[globalName];
 		}
 
 
