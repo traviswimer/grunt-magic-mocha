@@ -80,7 +80,7 @@ Specifies modules that should be attached to the global `window` variable.
 #### options.mochaOptions
 Type: `object`
 
-Specifies any mocha options to be used. For more details, look throught the [Mocha documentation](http://visionmedia.github.io/mocha/).
+Specifies any mocha options to be used. For more details, look throught the [Mocha documentation](http://mochajs.org/).
 
 The following options are included by default:
 *   **reporter** - "spec"
